@@ -20,13 +20,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.7.0
-        with:
-          php-version: 7.4
-          extensions: json, dom, curl, libxml, mbstring
-          coverage: none
-
       - name: Prepare Git User
         run: |
           git config --global user.name "github-actions[bot]"
@@ -34,7 +27,7 @@ jobs:
           git checkout -B "${{ env.FIXER_BRANCH }}"
 
       - name: Apply auto-fixers
-        run: php .github/build/php-cs-fixer fix
+        run: php php-cs-fixer fix
 
       - name: Create Fixer PR
         run: |

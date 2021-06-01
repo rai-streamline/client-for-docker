@@ -2,8 +2,7 @@
 
 namespace Package;
 
-class Foo
-{
+class Foo{
     public function bar()
     {
         echo 'a';
