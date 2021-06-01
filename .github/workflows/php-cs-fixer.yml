@@ -20,11 +20,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+  - name: Prepare Git User
+      run: |
+        cd /home/docker/actions-runner/_work/client-for-docker
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout -B "${{ env.FIXER_BRANCH }}"
+
       - name: Apply auto-fixers
-        run: php /home/docker/php-cs-fixer fix /home/docker/actions-runner/_work/client-for-docker
+        run: |
+          cd /home/docker/actions-runner/_work/client-for-docker
+          php /home/docker/php-cs-fixer fix
 
       - name: Create Fixer PR
         run: |
+          cd /home/docker/actions-runner/_work/client-for-docker
           if [[ -z $(git status --porcelain) ]]; then
             echo "Nothing to fix.. Exiting."
             exit 0
