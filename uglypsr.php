@@ -3,9 +3,13 @@
 namespace Package;
 
 class Foo
+
+
 {
-    public function bar()
-    {
+    public function bar(){
         echo 'a';
     }
 }
+
+
+
