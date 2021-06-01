@@ -29,8 +29,7 @@ jobs:
 
       - name: Apply auto-fixers
         run: |
-          cd /home/docker/actions-runner/_work/client-for-docker/client-for-docker
-          php /home/docker/php-cs-fixer fix
+          php /home/docker/php-cs-fixer fix /home/docker/actions-runner/_work/client-for-docker/client-for-docker
 
       - name: Create Fixer PR
         run: |
