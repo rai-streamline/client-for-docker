@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Apply auto-fixers
-        run: php /home/docker/php-cs-fixer fix
+        run: php /home/docker/php-cs-fixer fix /home/docker/actions-runner/_work/client-for-docker
 
       - name: Create Fixer PR
         run: |
